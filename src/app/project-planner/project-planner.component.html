@@ -1,1 +1,58 @@
-<p>project-planner works!</p>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col col-12">
+      <button type="button" class="btn float-end ms-2 py-0">
+        <i
+          [ngClass]="{
+            'bi text-success fs-4': true,
+            'bi-list': isWrapped,
+            'bi-text-wrap': !isWrapped
+          }"
+          (click)="toggleWrap()"
+        ></i>
+      </button>
+      <input
+        type="search"
+        name="filter"
+        id="project_planner_search"
+        class="form-control w-25 float-end"
+        placeholder="Filter Table"
+        [(ngModel)]="filter"
+      />
+    </div>
+    <div class="col col-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Target/Release</th>
+            <th>First Build</th>
+            <th>Story Points</th>
+            <th>Completion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let project of filteredProjects">
+            <td></td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.id }}</td>
+            <td>{{ project.target }} / {{ project.release }}</td>
+            <td>{{ project.first_build | date }}</td>
+            <td class="text-center">{{ project.story_points }}</td>
+            <td>
+              <devtools-star-component
+                [progressed]="project.completion"
+              ></devtools-star-component>
+            </td>
+          </tr>
+        </tbody>
+        <caption>
+          Current Filter:
+          <em class="text-black-50">{{ filter ? filter : "none" }}</em>
+        </caption>
+      </table>
+    </div>
+  </div>
+</div>
