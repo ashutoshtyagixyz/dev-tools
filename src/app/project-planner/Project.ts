@@ -1,5 +1,6 @@
 export interface IProject {
   name: string;
+  index: number;
   id: string;
   target: string;
   url_target: string;

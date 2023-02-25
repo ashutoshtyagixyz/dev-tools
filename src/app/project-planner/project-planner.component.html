@@ -36,7 +36,11 @@
         <tbody>
           <tr *ngFor="let project of filteredProjects">
             <td></td>
-            <td>{{ project.name }}</td>
+            <td>
+              <a [routerLink]="['/projects', project.index]">{{
+                project.name
+              }}</a>
+            </td>
             <td>{{ project.id }}</td>
             <td>{{ project.target }} / {{ project.release }}</td>
             <td>{{ project.first_build | date }}</td>
